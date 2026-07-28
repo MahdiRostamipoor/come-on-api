@@ -135,7 +135,7 @@ exports.login = async (req, res) => {
 
     try {
 
-        const { username, password } = req.body;
+        const { userName, password } = req.body;
 
         const user = await service.loginUser(
             userName,
@@ -144,7 +144,7 @@ exports.login = async (req, res) => {
 
         if (!user) {
             return res.status(401).json({
-                message: "Invalid username or password"
+                message: "Invalid userName or password"
             });
         }
 
