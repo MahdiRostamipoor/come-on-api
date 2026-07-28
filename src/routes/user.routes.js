@@ -10,6 +10,7 @@ router.post("/",controller.create);
 
 router.get("/",controller.getAll);
 
+router.post("/login", controller.login);
 
 router.get("/:id",controller.getOne);
 
