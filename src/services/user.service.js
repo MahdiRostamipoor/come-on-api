@@ -66,11 +66,11 @@ exports.deleteUser = async(id)=>{
 
 }
 
-exports.loginUser = async (username, password) => {
+exports.loginUser = async (userName, password) => {
 
     const user = await prisma.user.findUnique({
         where: {
-            username
+            userName: userName
         }
     });
 
@@ -78,7 +78,10 @@ exports.loginUser = async (username, password) => {
         return null;
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(
+        password,
+        user.password
+    );
 
     if (!isMatch) {
         return null;
