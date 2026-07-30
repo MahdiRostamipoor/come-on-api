@@ -34,3 +34,17 @@ model User {
 
   @@map("users")
 }
+
+model Territory {
+
+  id Int @id @default(autoincrement())
+
+  ownerId Int
+
+  location Json
+
+  date DateTime @default(now())
+
+
+  @@map("territories")
+}
