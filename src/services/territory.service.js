@@ -2,24 +2,46 @@ const prisma = require("../config/database");
 
 
 
-exports.createTerritory = async(data)=>{
+// exports.createTerritory = async(data)=>{
+
+
+//     await prisma.territory.create({
+
+//         data:{
+//             ownerId:data.ownerId,
+//             location:data.location
+//         }
+
+//     });
+
+
+//     return true;
+
+// }
+
+exports.createTerritory = async (data) => {
+
+    const matchedLocation =
+        await osrmService.matchLocation(
+            data.location
+        );
 
 
     await prisma.territory.create({
 
-        data:{
-            ownerId:data.ownerId,
-            location:data.location
+        data: {
+
+            ownerId: Number(data.ownerId),
+
+            location: matchedLocation
+
         }
 
     });
 
 
     return true;
-
-}
-
-
+};
 
 
 
